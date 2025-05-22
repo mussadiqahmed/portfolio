@@ -10,61 +10,100 @@ import StyleContext from "../../contexts/StyleContext";
 
 export default function Greeting() {
   const { isDark } = useContext(StyleContext);
-
   if (!greeting.displayGreeting) {
     return null;
   }
-
   return (
     <>
       <style>
         {`
+          /* Minimal CSS for button layout fix, top content visibility, and padding */
           .greet-main {
-            padding: 20px 15px !important;
+            padding: 20px 15px; /* Left/right padding and top space for desktop */
           }
 
           .button-greeting-div {
-            display: flex !important;
-            flex-direction: row !important;
-            gap: 10px !important;
-            align-items: center !important;
+            display: flex;
+            flex-direction: row; /* Side-by-side on larger screens */
+            gap: 10px; /* Space between buttons */
+            align-items: center;
           }
 
+          /* Style for the download link to match Button component */
           .download-link-button {
-            text-decoration: none !important;
+            text-decoration: none;
           }
 
+          /* Mobile screens */
           @media (max-width: 768px) {
             .greet-main {
-              padding: 30px 10px !important;
+              padding: 30px 10px; /* Left/right padding, top padding for mobile */
             }
 
             .button-greeting-div {
-              flex-direction: column !important;
-              align-items: center !important;
-              gap: 5px !important;
+              flex-direction: column; /* Stack buttons vertically */
+              align-items: center; /* Center buttons on mobile */
+              gap: 5px; /* Space between buttons */
             }
 
             .button-greeting-div .button,
             .button-greeting-div .download-link-button .button {
-              width: 100% !important;
-              max-width: 300px !important;
-              text-align: center !important;
+              width: 100%; /* Full-width buttons on mobile */
+              max-width: 300px; /* Limit max width */
+              text-align: center;
+            }
+
+            .greeting-main {
+              flex-direction: column; /* Stacked layout on mobile */
+            }
+
+            .greeting-text-div,
+            .greeting-image-div {
+              width: 100%;
+              padding: 0;
             }
           }
 
+          /* Extra small screens (e.g., 320px) */
           @media (max-width: 320px) {
             .greet-main {
-              padding: 90px 10px !important;
+              padding: 90px 10px; /* More top padding to prevent content hiding */
+            }
+            .greeting-text-div {
+              margin-top: 10px; /* Extra margin to counteract Fade animation */
+            }
+          }
+
+          /* Desktop/laptop screens: side-by-side layout */
+          @media (min-width: 769px) {
+            .greeting-main {
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              justify-content: space-between;
+            }
+
+            .greeting-text-div,
+            .greeting-image-div {
+              flex: 1;
+              padding: 20px;
             }
 
             .greeting-text-div {
-              margin-top: 10px !important;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: flex-start;
+            }
+
+            .greeting-image-div {
+              display: flex;
+              justify-content: center;
+              align-items: center;
             }
           }
         `}
       </style>
-
       <Fade bottom duration={1000} distance="40px">
         <div className="greet-main" id="greeting">
           <div className="greeting-main">
@@ -95,7 +134,7 @@ export default function Greeting() {
                       download="Resume.pdf"
                       className="download-link-button"
                     >
-                      <Button text=" my resume" />
+                      <Button text="Download my resume" />
                     </a>
                   )}
                 </div>
@@ -108,7 +147,7 @@ export default function Greeting() {
                 <img
                   alt="man sitting on table"
                   src={require("../../assets/images/manOnTable.svg")}
-                />
+                ></img>
               )}
             </div>
           </div>
