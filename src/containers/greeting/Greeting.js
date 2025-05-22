@@ -20,46 +20,46 @@ export default function Greeting() {
       <style>
         {`
           .greet-main {
-            padding: 20px 15px;
+            padding: 20px 15px !important;
           }
 
           .button-greeting-div {
-            display: flex;
-            flex-direction: row;
-            gap: 10px;
-            align-items: center;
+            display: flex !important;
+            flex-direction: row !important;
+            gap: 10px !important;
+            align-items: center !important;
           }
 
           .download-link-button {
-            text-decoration: none;
+            text-decoration: none !important;
           }
 
           @media (max-width: 768px) {
             .greet-main {
-              padding: 30px 10px;
+              padding: 30px 10px !important;
             }
 
             .button-greeting-div {
-              flex-direction: column;
-              align-items: center;
-              gap: 5px;
+              flex-direction: column !important;
+              align-items: center !important;
+              gap: 5px !important;
             }
 
             .button-greeting-div .button,
             .button-greeting-div .download-link-button .button {
-              width: 100%;
-              max-width: 300px;
-              text-align: center;
+              width: 100% !important;
+              max-width: 300px !important;
+              text-align: center !important;
             }
           }
 
           @media (max-width: 320px) {
             .greet-main {
-              padding: 90px 10px;
+              padding: 90px 10px !important;
             }
 
             .greeting-text-div {
-              margin-top: 10px;
+              margin-top: 10px !important;
             }
           }
         `}
