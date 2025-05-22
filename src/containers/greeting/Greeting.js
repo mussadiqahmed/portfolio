@@ -10,61 +10,61 @@ import StyleContext from "../../contexts/StyleContext";
 
 export default function Greeting() {
   const { isDark } = useContext(StyleContext);
+
   if (!greeting.displayGreeting) {
     return null;
   }
+
   return (
     <>
       <style>
         {`
-          /* Minimal CSS for button layout fix, top content visibility, and padding */
           .greet-main {
-            padding: 20px 15px; /* Left/right padding and top space for desktop */
+            padding: 20px 15px;
           }
 
           .button-greeting-div {
             display: flex;
-            flex-direction: row; /* Side-by-side on larger screens */
-            gap: 10px; /* Space between buttons */
+            flex-direction: row;
+            gap: 10px;
             align-items: center;
           }
 
-          /* Style for the download link to match Button component */
           .download-link-button {
             text-decoration: none;
           }
 
-          /* Mobile screens */
           @media (max-width: 768px) {
             .greet-main {
-              padding: 30px 10px; /* Left/right padding, top padding for mobile */
+              padding: 30px 10px;
             }
 
             .button-greeting-div {
-              flex-direction: column; /* Stack buttons vertically */
-              align-items: center; /* Center buttons on mobile */
-              gap: 5px; /* Space between buttons */
+              flex-direction: column;
+              align-items: center;
+              gap: 5px;
             }
 
             .button-greeting-div .button,
             .button-greeting-div .download-link-button .button {
-              width: 100%; /* Full-width buttons on mobile */
-              max-width: 300px; /* Limit max width */
+              width: 100%;
+              max-width: 300px;
               text-align: center;
             }
           }
 
-          /* Extra small screens (e.g., 320px) */
           @media (max-width: 320px) {
             .greet-main {
-              padding: 90px 10px; /* More top padding to prevent content hiding */
+              padding: 90px 10px;
             }
+
             .greeting-text-div {
-              margin-top: 10px; /* Extra margin to counteract Fade animation */
+              margin-top: 10px;
             }
           }
         `}
       </style>
+
       <Fade bottom duration={1000} distance="40px">
         <div className="greet-main" id="greeting">
           <div className="greeting-main">
@@ -108,7 +108,7 @@ export default function Greeting() {
                 <img
                   alt="man sitting on table"
                   src={require("../../assets/images/manOnTable.svg")}
-                ></img>
+                />
               )}
             </div>
           </div>
